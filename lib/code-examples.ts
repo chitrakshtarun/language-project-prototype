@@ -95,6 +95,37 @@ print "Count is now: " + count
 increment count by 1
 endwhile`,
   },
+  // boolean logic
+  {
+    id: "booleanlogic",
+    name: "Boolean Logic",
+    code: `x is equal to 5
+y is equal to 10
+z is equal to 15
+
+if x is greater than 3 and y is less than 15 then
+print "Both conditions are true"
+endif
+
+if x is equal to 5 or z is equal to 20 then
+print "At least one condition is true"
+endif
+
+if x is not equal to 10 and y is greater than 5 then
+print "x is not 10 AND y is greater than 5"
+endif`,
+  },
+  // ternary logic
+  {
+    id: "ternarylogic",
+    name: "Ternary Conditionals",
+    code: `age is equal to 18
+score is equal to 85
+
+if age is greater than 17 print "Adult" otherwise print "Minor"
+if score is greater than 90 print "Excellent" otherwise print "Good"
+if age is 18 print "Just turned adult!" otherwise print "Not 18"`,
+  },
   // playground
   {
     id: "playground",
