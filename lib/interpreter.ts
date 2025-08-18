@@ -40,7 +40,22 @@ export function parseEnglishToJS(englishCode: string): string {
       continue;
     }
 
-    // FOR LOOPS
+    // FOR LOOPS - Array iteration
+    if (line.startsWith("for ") && line.includes(" in ")) {
+      const parts = line.replace("for ", "").split(" in ");
+      const varName = parts[0].trim();
+      const arrayName = parts[1].trim();
+
+      if (!declaredVariables.has(varName)) {
+        jsCode += `${getIndent(indentLevel)}let ${varName};\n`;
+        declaredVariables.add(varName);
+      }
+      jsCode += `${getIndent(indentLevel)}for (${varName} of ${arrayName}) {\n`;
+      indentLevel++;
+      continue;
+    }
+
+    // FOR LOOPS - Numeric range (existing implementation)
     if (line.startsWith("for ") && line.includes(" from ") && line.includes(" to ")) {
       const parts = line.replace("for ", "").split(" from ");
       const varName = parts[0].trim();
@@ -100,6 +115,22 @@ export function parseEnglishToJS(englishCode: string): string {
       continue;
     }
 
+    // ARRAY DECLARATION
+    if (line.includes(" is a list containing ")) {
+      const [varName, values] = line.split(" is a list containing ");
+      const trimmedVarName = varName.trim();
+      const valueList = values.split(",").map((v) => v.trim());
+      const jsValues = valueList.map((v) => translateExpression(v)).join(", ");
+
+      if (declaredVariables.has(trimmedVarName)) {
+        jsCode += `${getIndent(indentLevel)}${trimmedVarName} = [${jsValues}];\n`;
+      } else {
+        jsCode += `${getIndent(indentLevel)}let ${trimmedVarName} = [${jsValues}];\n`;
+        declaredVariables.add(trimmedVarName);
+      }
+      continue;
+    }
+
     // SETTER
     if (line.includes(" is equal to ")) {
       const [varName, value] = line.split(" is equal to ");
@@ -151,10 +182,33 @@ function translateExpression(expr: string): string {
     return expr;
   }
 
-  // ADD
+  // ARRAY SIZE
+  if (expr.startsWith("size of ")) {
+    const arrayName = expr.replace("size of ", "").trim();
+    return `${arrayName}.length`;
+  }
+
+  // ARRAY INDEXING
+  if (expr.includes("position ") && expr.includes(" of ")) {
+    const positionMatch = expr.match(/position (\d+) of (\w+)/);
+    if (positionMatch) {
+      const position = parseInt(positionMatch[1]);
+      const arrayName = positionMatch[2];
+      // Convert 1-based indexing to 0-based
+      return `${arrayName}[${position - 1}]`;
+    }
+  }
+
+  // ADD (with special handling for concatenation with +)
   if (expr.includes(" plus ")) {
     const [left, right] = expr.split(" plus ");
     return `${translateExpression(left.trim())} + ${translateExpression(right.trim())}`;
+  }
+
+  // STRING CONCATENATION (using +)
+  if (expr.includes(" + ")) {
+    const parts = expr.split(" + ");
+    return parts.map((part) => translateExpression(part.trim())).join(" + ");
   }
 
   // SUBTRACT
