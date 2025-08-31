@@ -4,9 +4,9 @@ import { Card } from "@/components/ui/card";
 import { Editor } from "@monaco-editor/react";
 import { Button } from "@/components/ui/button";
 import { Resizable } from "re-resizable";
-import { codeExamples } from "@/lib/code-examples";
+import { codeExamples } from "@/language/examples";
 import { useState, useEffect } from "react";
-import { parseEnglishToJS, executeJS } from "@/lib/interpreter";
+import { customParse, executeJS } from "@/language/interpreter";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 export default function Home() {
@@ -17,7 +17,7 @@ export default function Home() {
 
   const handleRunCode = () => {
     try {
-      const js = parseEnglishToJS(code);
+      const js = customParse(code);
       setJsCode(js);
       setError("");
 
