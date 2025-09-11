@@ -8,6 +8,7 @@ import { codeExamples } from "@/language/examples";
 import { useState, useEffect } from "react";
 import { customParse, executeJS } from "@/language/interpreter";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import Link from "next/link";
 
 export default function Home() {
   const [error, setError] = useState("");
@@ -45,7 +46,12 @@ export default function Home() {
     <div className="flex flex-col w-screen h-screen overflow-hidden">
       <nav className="flex flex-row w-screen items-center justify-between overflow-hidden border-b py-4 px-8">
         <h1 className="text-2xl font-bold">General-Purpose Programming Language Prototype</h1>
-        <Button onClick={handleRunCode}>Run Code</Button>
+        <div className="flex gap-4">
+          <Link href={"/docs"}>
+            <Button variant={"link"}>Documentation</Button>
+          </Link>
+          <Button onClick={handleRunCode}>Run Code</Button>
+        </div>
       </nav>
 
       <main className="flex-1 w-screen p-8 overflow-hidden">
