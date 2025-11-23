@@ -3,7 +3,7 @@
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Code2, Variable, Calculator, GitBranch, RotateCcw } from "lucide-react";
+import { Code2, Variable, Calculator, GitBranch, RotateCcw, Function } from "lucide-react";
 
 export default function SyntaxPage() {
   return (
@@ -241,6 +241,80 @@ export default function SyntaxPage() {
                   <div className="ml-4">print counter</div>
                   <div className="ml-4">increment counter</div>
                   <div>endwhile</div>
+                </div>
+              </div>
+            </TabsContent>
+          </Tabs>
+        </CardContent>
+      </Card>
+
+      {/* Functions */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center space-x-2">
+            <Function className="h-5 w-5" />
+            <span>Functions</span>
+          </CardTitle>
+          <CardDescription>Define and call reusable functions</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <Tabs defaultValue="declaration" className="w-full">
+            <TabsList className="grid w-full grid-cols-3">
+              <TabsTrigger value="declaration">Declaration</TabsTrigger>
+              <TabsTrigger value="calling">Calling</TabsTrigger>
+              <TabsTrigger value="examples">Examples</TabsTrigger>
+            </TabsList>
+            <TabsContent value="declaration">
+              <div className="space-y-4">
+                <div className="bg-muted p-4 rounded-lg font-mono text-sm">
+                  <div className="text-primary font-semibold mb-2">Pattern (No Parameters):</div>
+                  <div>let function_name be a function</div>
+                  <div className="ml-4"># statements</div>
+                  <div>end function</div>
+                </div>
+                <div className="bg-muted p-4 rounded-lg font-mono text-sm">
+                  <div className="text-primary font-semibold mb-2">Pattern (With Parameters):</div>
+                  <div>let function_name be a function accepting param1 and param2</div>
+                  <div className="ml-4"># statements</div>
+                  <div>end function</div>
+                </div>
+                <div className="text-sm text-muted-foreground">
+                  Functions can accept multiple parameters separated by "and". Use "return value" to return a value from a function.
+                </div>
+              </div>
+            </TabsContent>
+            <TabsContent value="calling">
+              <div className="space-y-4">
+                <div className="bg-muted p-4 rounded-lg font-mono text-sm">
+                  <div className="text-primary font-semibold mb-2">Pattern (No Parameters):</div>
+                  <div>run function_name</div>
+                </div>
+                <div className="bg-muted p-4 rounded-lg font-mono text-sm">
+                  <div className="text-primary font-semibold mb-2">Pattern (With Parameters):</div>
+                  <div>run function_name with arg1 and arg2</div>
+                </div>
+                <div className="bg-muted p-4 rounded-lg font-mono text-sm">
+                  <div className="text-primary font-semibold mb-2">Using Return Value:</div>
+                  <div>result is equal to run function_name with arg1 and arg2</div>
+                </div>
+              </div>
+            </TabsContent>
+            <TabsContent value="examples">
+              <div className="space-y-4">
+                <div className="bg-muted p-4 rounded-lg font-mono text-sm">
+                  <div className="text-green-600 mb-2"># Simple Function</div>
+                  <div>let greet be a function</div>
+                  <div className="ml-4">print "Hello, World!"</div>
+                  <div>end function</div>
+                  <div className="mt-2">run greet</div>
+                </div>
+                <div className="bg-muted p-4 rounded-lg font-mono text-sm">
+                  <div className="text-green-600 mb-2"># Function with Return Value</div>
+                  <div>let add be a function accepting a and b</div>
+                  <div className="ml-4">return a plus b</div>
+                  <div>end function</div>
+                  <div className="mt-2">result is equal to run add with 5 and 10</div>
+                  <div>print result</div>
                 </div>
               </div>
             </TabsContent>

@@ -2,7 +2,7 @@ import { getIndent } from "../../helpers";
 import type { ParseContext, ParseResult } from "./types";
 
 export function parseForLoops(context: ParseContext): ParseResult {
-  const { line, indentLevel, inIfBlock, inWhileLoop, declaredVariables } = context;
+  const { line, indentLevel, inIfBlock, inWhileLoop, inFunction, declaredVariables, declaredFunctions } = context;
 
   // FOR LOOPS - Array iteration
   if (line.startsWith("for ") && line.includes(" in ")) {
@@ -22,7 +22,9 @@ export function parseForLoops(context: ParseContext): ParseResult {
       indentLevel: indentLevel + 1,
       inIfBlock,
       inWhileLoop,
+      inFunction,
       declaredVariables,
+      declaredFunctions,
       handled: true,
     };
   }
@@ -47,7 +49,9 @@ export function parseForLoops(context: ParseContext): ParseResult {
       indentLevel: indentLevel + 1,
       inIfBlock,
       inWhileLoop,
+      inFunction,
       declaredVariables,
+      declaredFunctions,
       handled: true,
     };
   }
@@ -71,7 +75,9 @@ export function parseForLoops(context: ParseContext): ParseResult {
     indentLevel,
     inIfBlock,
     inWhileLoop,
+    inFunction,
     declaredVariables,
+    declaredFunctions,
     handled: false,
   };
 }

@@ -6,6 +6,8 @@ import {
   parseArithmeticOperations,
   parseVariableDeclarations,
   parsePrintStatements,
+  parseFunctions,
+  parseFunctionCalls,
   type ParseContext,
 } from "./constructs";
 
@@ -15,8 +17,10 @@ export function customParse(englishCode: string): string {
   let indentLevel = 0;
   let inIfBlock = false;
   let inWhileLoop = false;
+  let inFunction = false;
 
   const declaredVariables = new Set<string>();
+  const declaredFunctions = new Set<string>();
 
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i].trim();
@@ -31,14 +35,19 @@ export function customParse(englishCode: string): string {
       indentLevel,
       inIfBlock,
       inWhileLoop,
+      inFunction,
       declaredVariables,
+      declaredFunctions,
     };
 
     // Try each construct parser in order
+    // Functions and function calls should come before variable declarations to avoid conflicts with "let"
     const parsers = [
       parseIfStatements,
       parseForLoops,
       parseWhileLoops,
+      parseFunctions,
+      parseFunctionCalls,
       parseArithmeticOperations,
       parseVariableDeclarations,
       parsePrintStatements,
@@ -52,6 +61,7 @@ export function customParse(englishCode: string): string {
         indentLevel = result.indentLevel;
         inIfBlock = result.inIfBlock;
         inWhileLoop = result.inWhileLoop;
+        inFunction = result.inFunction;
         handled = true;
         break;
       }

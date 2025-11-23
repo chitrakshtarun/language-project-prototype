@@ -2,7 +2,7 @@ import { getIndent, translateCondition, translateExpression } from "../../helper
 import type { ParseContext, ParseResult } from "./types";
 
 export function parsePrintStatements(context: ParseContext): ParseResult {
-  const { line, indentLevel, inIfBlock, inWhileLoop, declaredVariables } = context;
+  const { line, indentLevel, inIfBlock, inWhileLoop, inFunction, declaredVariables, declaredFunctions } = context;
 
   // TERNARY CONDITIONAL PRINT
   if (line.startsWith("if ") && line.includes(" print ") && line.includes(" otherwise print ")) {
@@ -23,7 +23,9 @@ export function parsePrintStatements(context: ParseContext): ParseResult {
         indentLevel,
         inIfBlock,
         inWhileLoop,
+        inFunction,
         declaredVariables,
+        declaredFunctions,
         handled: true,
       };
     }
@@ -50,7 +52,9 @@ export function parsePrintStatements(context: ParseContext): ParseResult {
     indentLevel,
     inIfBlock,
     inWhileLoop,
+    inFunction,
     declaredVariables,
+    declaredFunctions,
     handled: false,
   };
 }

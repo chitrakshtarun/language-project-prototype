@@ -9,6 +9,7 @@ import { booleanLogic } from "./boolean-logic";
 import { ternaryConditionals } from "./ternary-conditionals";
 import { arrayOperations } from "./array-operations";
 import { userInput } from "./user-input";
+import { functions, functionWithConditionals } from "./functions";
 import { playground } from "./playground";
 
 export {
@@ -23,6 +24,8 @@ export {
   ternaryConditionals,
   arrayOperations,
   userInput,
+  functions,
+  functionWithConditionals,
   playground,
 };
 
@@ -38,5 +41,7 @@ export const codeExamples = [
   ternaryConditionals,
   arrayOperations,
   userInput,
+  functions,
+  functionWithConditionals,
   playground,
 ];

@@ -2,7 +2,7 @@ import { getIndent, translateExpression } from "../../helpers";
 import type { ParseContext, ParseResult } from "./types";
 
 export function parseVariableDeclarations(context: ParseContext): ParseResult {
-  const { line, indentLevel, inIfBlock, inWhileLoop, declaredVariables } = context;
+  const { line, indentLevel, inIfBlock, inWhileLoop, inFunction, declaredVariables, declaredFunctions } = context;
 
   // USER INPUT - Pattern: "initialise x with user input" or "initialise x as type with user input" or with custom prompt
   if (line.startsWith("initialise ") && line.includes(" with user input")) {
@@ -82,7 +82,9 @@ export function parseVariableDeclarations(context: ParseContext): ParseResult {
       indentLevel,
       inIfBlock,
       inWhileLoop,
+      inFunction,
       declaredVariables,
+      declaredFunctions,
       handled: true,
     };
   }
@@ -107,7 +109,9 @@ export function parseVariableDeclarations(context: ParseContext): ParseResult {
       indentLevel,
       inIfBlock,
       inWhileLoop,
+      inFunction,
       declaredVariables,
+      declaredFunctions,
       handled: true,
     };
   }
@@ -131,7 +135,9 @@ export function parseVariableDeclarations(context: ParseContext): ParseResult {
       indentLevel,
       inIfBlock,
       inWhileLoop,
+      inFunction,
       declaredVariables,
+      declaredFunctions,
       handled: true,
     };
   }
@@ -141,7 +147,9 @@ export function parseVariableDeclarations(context: ParseContext): ParseResult {
     indentLevel,
     inIfBlock,
     inWhileLoop,
+    inFunction,
     declaredVariables,
+    declaredFunctions,
     handled: false,
   };
 }

@@ -3,7 +3,9 @@ export interface ParseContext {
   indentLevel: number;
   inIfBlock: boolean;
   inWhileLoop: boolean;
+  inFunction: boolean;
   declaredVariables: Set<string>;
+  declaredFunctions: Set<string>;
 }
 
 export interface ParseResult {
@@ -11,6 +13,8 @@ export interface ParseResult {
   indentLevel: number;
   inIfBlock: boolean;
   inWhileLoop: boolean;
+  inFunction: boolean;
   declaredVariables: Set<string>;
+  declaredFunctions: Set<string>;
   handled: boolean;
 }

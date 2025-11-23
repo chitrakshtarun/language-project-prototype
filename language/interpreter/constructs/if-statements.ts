@@ -2,7 +2,7 @@ import { getIndent, translateCondition } from "../../helpers";
 import type { ParseContext, ParseResult } from "./types";
 
 export function parseIfStatements(context: ParseContext): ParseResult {
-  const { line, indentLevel, inIfBlock, inWhileLoop, declaredVariables } = context;
+  const { line, indentLevel, inIfBlock, inWhileLoop, inFunction, declaredVariables, declaredFunctions } = context;
 
   // IF CONDITIONS
   if (line.startsWith("if ") && line.includes(" then")) {
@@ -15,7 +15,9 @@ export function parseIfStatements(context: ParseContext): ParseResult {
       indentLevel: indentLevel + 1,
       inIfBlock: true,
       inWhileLoop,
+      inFunction,
       declaredVariables,
+      declaredFunctions,
       handled: true,
     };
   }
@@ -29,7 +31,9 @@ export function parseIfStatements(context: ParseContext): ParseResult {
       indentLevel: indentLevel + 1,
       inIfBlock,
       inWhileLoop,
+      inFunction,
       declaredVariables,
+      declaredFunctions,
       handled: true,
     };
   }
@@ -43,7 +47,9 @@ export function parseIfStatements(context: ParseContext): ParseResult {
       indentLevel: indentLevel - 1,
       inIfBlock: false,
       inWhileLoop,
+      inFunction,
       declaredVariables,
+      declaredFunctions,
       handled: true,
     };
   }
@@ -53,7 +59,9 @@ export function parseIfStatements(context: ParseContext): ParseResult {
     indentLevel,
     inIfBlock,
     inWhileLoop,
+    inFunction,
     declaredVariables,
+    declaredFunctions,
     handled: false,
   };
 }

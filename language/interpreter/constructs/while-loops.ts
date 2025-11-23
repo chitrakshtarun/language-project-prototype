@@ -2,7 +2,7 @@ import { getIndent, translateCondition } from "../../helpers";
 import type { ParseContext, ParseResult } from "./types";
 
 export function parseWhileLoops(context: ParseContext): ParseResult {
-  const { line, indentLevel, inIfBlock, inWhileLoop, declaredVariables } = context;
+  const { line, indentLevel, inIfBlock, inWhileLoop, inFunction, declaredVariables, declaredFunctions } = context;
 
   // WHILE CONDITIONS
   if (line.startsWith("while ") && line.includes(" do")) {
@@ -15,7 +15,9 @@ export function parseWhileLoops(context: ParseContext): ParseResult {
       indentLevel: indentLevel + 1,
       inIfBlock,
       inWhileLoop: true,
+      inFunction,
       declaredVariables,
+      declaredFunctions,
       handled: true,
     };
   }
@@ -29,7 +31,9 @@ export function parseWhileLoops(context: ParseContext): ParseResult {
       indentLevel: indentLevel - 1,
       inIfBlock,
       inWhileLoop: false,
+      inFunction,
       declaredVariables,
+      declaredFunctions,
       handled: true,
     };
   }
@@ -39,7 +43,9 @@ export function parseWhileLoops(context: ParseContext): ParseResult {
     indentLevel,
     inIfBlock,
     inWhileLoop,
+    inFunction,
     declaredVariables,
+    declaredFunctions,
     handled: false,
   };
 }

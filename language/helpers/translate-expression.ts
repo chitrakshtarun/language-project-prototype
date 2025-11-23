@@ -50,5 +50,30 @@ export function translateExpression(expr: string): string {
     return `${translateExpression(left.trim())} / ${translateExpression(right.trim())}`;
   }
 
+  // FUNCTION CALL - With parameters
+  // Pattern: "run x with a and b"
+  if (expr.startsWith("run ") && expr.includes(" with ")) {
+    const afterRun = expr.replace("run ", "").trim();
+    const parts = afterRun.split(" with ");
+    
+    if (parts.length === 2) {
+      const functionName = parts[0].trim();
+      const argsString = parts[1].trim();
+      
+      // Parse arguments: "5 and 10" -> ["5", "10"]
+      const args = argsString.split(" and ").map(arg => translateExpression(arg.trim()));
+      
+      const jsArgs = args.join(", ");
+      return `${functionName}(${jsArgs})`;
+    }
+  }
+
+  // FUNCTION CALL - No parameters
+  // Pattern: "run x"
+  if (expr.startsWith("run ") && !expr.includes(" with ")) {
+    const functionName = expr.replace("run ", "").trim();
+    return `${functionName}()`;
+  }
+
   return expr.trim();
 }

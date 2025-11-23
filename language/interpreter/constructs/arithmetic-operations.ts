@@ -2,7 +2,7 @@ import { getIndent } from "../../helpers";
 import type { ParseContext, ParseResult } from "./types";
 
 export function parseArithmeticOperations(context: ParseContext): ParseResult {
-  const { line, indentLevel, inIfBlock, inWhileLoop, declaredVariables } = context;
+  const { line, indentLevel, inIfBlock, inWhileLoop, inFunction, declaredVariables, declaredFunctions } = context;
 
   // INCREMENT
   if (line.startsWith("increment ") && line.includes(" by ")) {
@@ -16,7 +16,9 @@ export function parseArithmeticOperations(context: ParseContext): ParseResult {
       indentLevel,
       inIfBlock,
       inWhileLoop,
+      inFunction,
       declaredVariables,
+      declaredFunctions,
       handled: true,
     };
   }
@@ -33,7 +35,9 @@ export function parseArithmeticOperations(context: ParseContext): ParseResult {
       indentLevel,
       inIfBlock,
       inWhileLoop,
+      inFunction,
       declaredVariables,
+      declaredFunctions,
       handled: true,
     };
   }
@@ -43,7 +47,9 @@ export function parseArithmeticOperations(context: ParseContext): ParseResult {
     indentLevel,
     inIfBlock,
     inWhileLoop,
+    inFunction,
     declaredVariables,
+    declaredFunctions,
     handled: false,
   };
 }
