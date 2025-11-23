@@ -30,6 +30,15 @@ A general-purpose programming language that resembles natural English, making pr
   - Multiplication: `result is equal to x times y`
   - Division: `result is equal to x divided by y`
 
+- **Random Number Generation**
+
+  ```
+  randomValue is equal to random number from 1 to 10
+  diceRoll is equal to random number from 1 to 6
+  ```
+
+  Generates a random integer between the specified minimum and maximum values (inclusive). Both bounds can be literal numbers or expressions.
+
 - **Array Operations**
 
   ```

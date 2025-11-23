@@ -11,6 +11,7 @@ import { arrayOperations } from "./array-operations";
 import { userInput } from "./user-input";
 import { functions, functionWithConditionals } from "./functions";
 import { playground } from "./playground";
+import { rockPaperScissors } from "./rock-paper-scissors";
 
 export {
   basicAddition,
@@ -27,6 +28,7 @@ export {
   functions,
   functionWithConditionals,
   playground,
+  rockPaperScissors,
 };
 
 export const codeExamples = [
@@ -44,4 +46,5 @@ export const codeExamples = [
   functions,
   functionWithConditionals,
   playground,
+  rockPaperScissors,
 ];

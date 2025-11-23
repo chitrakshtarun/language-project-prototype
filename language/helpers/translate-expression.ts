@@ -20,6 +20,21 @@ export function translateExpression(expr: string): string {
     }
   }
 
+  // RANDOM NUMBER GENERATION
+  // Pattern: "random number from X to Y"
+  if (expr.includes("random number from ") && expr.includes(" to ")) {
+    // Use a more precise match that splits on " to " (with spaces) to avoid conflicts
+    const randomMatch = expr.match(/random number from (.+?) to (.+)$/);
+    if (randomMatch) {
+      const minExpr = randomMatch[1].trim();
+      const maxExpr = randomMatch[2].trim();
+      const minJs = translateExpression(minExpr);
+      const maxJs = translateExpression(maxExpr);
+      // Generate random integer from min to max (inclusive)
+      return `Math.floor(Math.random() * (${maxJs} - ${minJs} + 1)) + ${minJs}`;
+    }
+  }
+
   // ADD (with special handling for concatenation with +)
   if (expr.includes(" plus ")) {
     const [left, right] = expr.split(" plus ");
@@ -55,14 +70,14 @@ export function translateExpression(expr: string): string {
   if (expr.startsWith("run ") && expr.includes(" with ")) {
     const afterRun = expr.replace("run ", "").trim();
     const parts = afterRun.split(" with ");
-    
+
     if (parts.length === 2) {
       const functionName = parts[0].trim();
       const argsString = parts[1].trim();
-      
+
       // Parse arguments: "5 and 10" -> ["5", "10"]
-      const args = argsString.split(" and ").map(arg => translateExpression(arg.trim()));
-      
+      const args = argsString.split(" and ").map((arg) => translateExpression(arg.trim()));
+
       const jsArgs = args.join(", ");
       return `${functionName}(${jsArgs})`;
     }
