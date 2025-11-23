@@ -8,6 +8,7 @@ import { whileLoops } from "./while-loops";
 import { booleanLogic } from "./boolean-logic";
 import { ternaryConditionals } from "./ternary-conditionals";
 import { arrayOperations } from "./array-operations";
+import { userInput } from "./user-input";
 import { playground } from "./playground";
 
 export {
@@ -21,6 +22,7 @@ export {
   booleanLogic,
   ternaryConditionals,
   arrayOperations,
+  userInput,
   playground,
 };
 
@@ -35,5 +37,6 @@ export const codeExamples = [
   booleanLogic,
   ternaryConditionals,
   arrayOperations,
+  userInput,
   playground,
 ];

@@ -70,6 +70,108 @@ is_active is equal to true`)
         </CardContent>
       </Card>
 
+      {/* User Input */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center space-x-2">
+            <Variable className="h-5 w-5" />
+            <span>User Input</span>
+          </CardTitle>
+          <CardDescription>Get values from users at runtime</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <Tabs defaultValue="syntax" className="w-full">
+            <TabsList className="grid w-full grid-cols-2">
+              <TabsTrigger value="syntax">Syntax</TabsTrigger>
+              <TabsTrigger value="examples">Examples</TabsTrigger>
+            </TabsList>
+            <TabsContent value="syntax">
+              <div className="space-y-4">
+                <div className="bg-muted p-4 rounded-lg font-mono text-sm space-y-2">
+                  <div className="text-primary font-semibold mb-2">Basic Pattern:</div>
+                  <div>initialise variable_name with user input</div>
+                  <div className="mt-3 text-primary font-semibold mb-2">With Custom Prompt:</div>
+                  <div>initialise variable_name with user input "Your prompt message:"</div>
+                  <div className="mt-3 text-primary font-semibold mb-2">With Type Specification:</div>
+                  <div>initialise variable_name as type with user input</div>
+                  <div className="mt-3 text-primary font-semibold mb-2">Combined:</div>
+                  <div>initialise variable_name as type with user input "Your prompt:"</div>
+                </div>
+                <div className="text-sm text-muted-foreground space-y-2">
+                  <p>
+                    User input allows you to get values from users while your program is running. The browser will show a prompt dialog asking for input.
+                  </p>
+                  <p>
+                    <strong>Supported types:</strong> <code className="bg-muted px-1 rounded">number</code>, <code className="bg-muted px-1 rounded">boolean</code>, <code className="bg-muted px-1 rounded">string</code> (default)
+                  </p>
+                  <p>
+                    If no type is specified, the input is treated as a string. For boolean input, enter "true" or "True" (case-insensitive).
+                  </p>
+                </div>
+              </div>
+            </TabsContent>
+            <TabsContent value="examples">
+              <div className="space-y-4">
+                <div className="space-y-3">
+                  <h4 className="font-semibold">Basic String Input</h4>
+                  <div className="bg-muted p-3 rounded-lg font-mono text-sm space-y-1">
+                    <div>initialise name with user input "Enter your name:"</div>
+                    <div>print "Hello, " + name</div>
+                  </div>
+                </div>
+                <div className="space-y-3">
+                  <h4 className="font-semibold">Number Input</h4>
+                  <div className="bg-muted p-3 rounded-lg font-mono text-sm space-y-1">
+                    <div>initialise age as number with user input "Enter your age:"</div>
+                    <div>initialise nextYear as number</div>
+                    <div>nextYear is equal to age plus 1</div>
+                    <div>print "Next year you will be " + nextYear</div>
+                  </div>
+                </div>
+                <div className="space-y-3">
+                  <h4 className="font-semibold">Boolean Input</h4>
+                  <div className="bg-muted p-3 rounded-lg font-mono text-sm space-y-1">
+                    <div>initialise isStudent as boolean with user input "Are you a student? (true/false):"</div>
+                    <div>if isStudent then</div>
+                    <div className="ml-4">print "You are a student!"</div>
+                    <div>endif</div>
+                  </div>
+                </div>
+                <div className="space-y-3">
+                  <h4 className="font-semibold">Default Prompt</h4>
+                  <div className="bg-muted p-3 rounded-lg font-mono text-sm space-y-1">
+                    <div>initialise value with user input</div>
+                    <div>print value</div>
+                  </div>
+                  <p className="text-sm text-muted-foreground">Uses default prompt: "Enter value:"</p>
+                </div>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() =>
+                    navigator.clipboard.writeText(`initialise name with user input "Enter your name:"
+print "Hello, " + name
+
+initialise age as number with user input "Enter your age:"
+initialise nextYear as number
+nextYear is equal to age plus 1
+print "Next year you will be " + nextYear
+
+initialise isStudent as boolean with user input "Are you a student? (true/false):"
+if isStudent then
+print "You are a student!"
+endif`)
+                  }
+                >
+                  <Copy className="mr-2 h-4 w-4" />
+                  Copy Examples
+                </Button>
+              </div>
+            </TabsContent>
+          </Tabs>
+        </CardContent>
+      </Card>
+
       {/* Data Types */}
       <Card>
         <CardHeader>

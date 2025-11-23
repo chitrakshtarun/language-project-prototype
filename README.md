@@ -13,6 +13,16 @@ A general-purpose programming language that resembles natural English, making pr
   name is equal to "John"
   ```
 
+- **User Input**
+
+  ```
+  initialise name with user input "Enter your name:"
+  initialise age as number with user input "Enter your age:"
+  initialise isStudent as boolean with user input "Are you a student? (true/false):"
+  ```
+
+  Supports optional type specification (`as number`, `as boolean`, `as string`) and custom prompt messages.
+
 - **Mathematical Operations**
 
   - Addition: `result is equal to x plus y`
