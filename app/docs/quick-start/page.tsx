@@ -1,11 +1,8 @@
 "use client";
 
-import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import Link from "next/link";
-import { Play, ArrowRight, CheckCircle } from "lucide-react";
+import { CheckCircle } from "lucide-react";
 
 export default function QuickStartPage() {
   return (
@@ -26,7 +23,7 @@ export default function QuickStartPage() {
               </div>
               <CardTitle>Write Your First Program</CardTitle>
             </div>
-            <CardDescription>Let's start with a simple addition program</CardDescription>
+            <CardDescription>Let{"s"} start with a simple addition program</CardDescription>
           </CardHeader>
           <CardContent>
             <Tabs defaultValue="english" className="w-full">
@@ -42,19 +39,19 @@ export default function QuickStartPage() {
                   <div className="mt-2">result is equal to x plus y</div>
                   <div>print result</div>
                   <div className="mt-2">if result is greater than 25 then</div>
-                  <div className="ml-4">print "Result is large!"</div>
+                  <div className="ml-4">print {'"Result is large!"'}</div>
                   <div>endif</div>
                 </div>
               </TabsContent>
               <TabsContent value="javascript">
                 <div className="bg-muted p-4 rounded-lg font-mono text-sm">
-                  <div className="text-green-600 mb-2">// My first program</div>
+                  <div className="text-green-600 mb-2">{"// My first program"}</div>
                   <div>let x = 10;</div>
                   <div>let y = 20;</div>
                   <div className="mt-2">let result = x + y;</div>
                   <div>console.log(result);</div>
                   <div className="mt-2">{"if (result > 25) {'{'}"}</div>
-                  <div className="ml-4">console.log("Result is large!");</div>
+                  <div className="ml-4">console.log({'"Result is large!"'});</div>
                   <div>{"}"}</div>
                 </div>
               </TabsContent>
@@ -137,7 +134,7 @@ export default function QuickStartPage() {
                 <div className="bg-muted p-3 rounded-lg font-mono text-sm">
                   <div>if age is greater than 12 then</div>
                   <div className="ml-4">if age is less than 20 then</div>
-                  <div className="ml-8">print "Teenager"</div>
+                  <div className="ml-8">print {'"Teenager"'}</div>
                   <div className="ml-4">endif</div>
                   <div>endif</div>
                 </div>

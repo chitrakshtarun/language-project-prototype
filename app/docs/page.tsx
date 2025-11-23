@@ -141,7 +141,7 @@ export default function DocsPage() {
 
       {/* Navigation */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-bold">What's Next?</h2>
+        <h2 className="text-2xl font-bold">{"What's Next?"}</h2>
         <div className="grid gap-4 md:grid-cols-3">
           <Card className="hover:shadow-lg transition-shadow">
             <CardHeader>

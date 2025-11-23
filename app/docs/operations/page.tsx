@@ -42,7 +42,7 @@ export default function OperationsPage() {
                 </div>
               </div>
               <p className="text-sm text-muted-foreground">
-                Use "plus" to add numbers together. You can chain multiple additions.
+                Use {"plus"} to add numbers together. You can chain multiple additions.
               </p>
             </div>
 
@@ -59,7 +59,7 @@ export default function OperationsPage() {
                   remaining is equal to total <span className="text-primary">minus</span> used
                 </div>
               </div>
-              <p className="text-sm text-muted-foreground">Use "minus" to subtract one number from another.</p>
+              <p className="text-sm text-muted-foreground">Use {"minus"} to subtract one number from another.</p>
             </div>
 
             <div className="space-y-4">
@@ -75,7 +75,7 @@ export default function OperationsPage() {
                   area is equal to width <span className="text-primary">times</span> height
                 </div>
               </div>
-              <p className="text-sm text-muted-foreground">Use "times" to multiply numbers together.</p>
+              <p className="text-sm text-muted-foreground">Use {"times"} to multiply numbers together.</p>
             </div>
 
             <div className="space-y-4">
@@ -91,7 +91,7 @@ export default function OperationsPage() {
                   average is equal to total <span className="text-primary">divided by</span> count
                 </div>
               </div>
-              <p className="text-sm text-muted-foreground">Use "divided by" to divide one number by another.</p>
+              <p className="text-sm text-muted-foreground">Use {"divided by"} to divide one number by another.</p>
             </div>
           </div>
         </CardContent>
@@ -170,17 +170,17 @@ export default function OperationsPage() {
             <div className="space-y-3">
               <h4 className="font-semibold">String Concatenation</h4>
               <div className="bg-muted p-4 rounded-lg font-mono text-sm space-y-1">
-                <div>first_name is equal to "John"</div>
-                <div>last_name is equal to "Doe"</div>
+                <div>first_name is equal to {"John"}</div>
+                <div>last_name is equal to {"Doe"}</div>
                 <div>
-                  full_name is equal to first_name <span className="text-primary">plus</span> " "{" "}
+                  full_name is equal to first_name <span className="text-primary">plus</span> {'" "'}{" "}
                   <span className="text-primary">plus</span> last_name
                 </div>
                 <div>print full_name</div>
                 <div className="text-green-600"># Output: John Doe</div>
               </div>
               <p className="text-sm text-muted-foreground">
-                Use "plus" to join strings together. This works the same as adding numbers.
+                Use {"plus"} to join strings together. This works the same as adding numbers.
               </p>
             </div>
 
@@ -189,8 +189,8 @@ export default function OperationsPage() {
               <div className="bg-muted p-4 rounded-lg font-mono text-sm space-y-1">
                 <div>age is equal to 25</div>
                 <div>
-                  message is equal to "I am " <span className="text-primary">plus</span> age{" "}
-                  <span className="text-primary">plus</span> " years old"
+                  message is equal to {"I am "} <span className="text-primary">plus</span> age{" "}
+                  <span className="text-primary">plus</span> {" years old"}
                 </div>
                 <div>print message</div>
                 <div className="text-green-600"># Output: I am 25 years old</div>
@@ -288,7 +288,7 @@ export default function OperationsPage() {
               <h4 className="font-semibold">Usage in Conditions</h4>
               <div className="bg-muted p-3 rounded-lg font-mono text-sm space-y-1">
                 <div>if age is greater than 18 then</div>
-                <div className="ml-4">print "Adult"</div>
+                <div className="ml-4">print {"Adult"}</div>
                 <div>endif</div>
               </div>
             </div>
@@ -392,7 +392,7 @@ export default function OperationsPage() {
               <div>
                 <p className="font-medium">Be careful with division by zero</p>
                 <p className="text-sm text-muted-foreground">
-                  Always ensure you're not dividing by zero to avoid runtime errors.
+                  Always ensure you{"re"} not dividing by zero to avoid runtime errors.
                 </p>
               </div>
             </div>

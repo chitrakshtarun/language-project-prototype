@@ -47,7 +47,7 @@ export default function VariablesPage() {
               <div className="space-y-4">
                 <div className="bg-muted p-4 rounded-lg font-mono text-sm space-y-1">
                   <div>age is equal to 25</div>
-                  <div>name is equal to "Alice"</div>
+                  <div>name is equal to {'"Alice"'}</div>
                   <div>price is equal to 29.99</div>
                   <div>is_active is equal to true</div>
                 </div>
@@ -91,21 +91,25 @@ is_active is equal to true`)
                   <div className="text-primary font-semibold mb-2">Basic Pattern:</div>
                   <div>initialise variable_name with user input</div>
                   <div className="mt-3 text-primary font-semibold mb-2">With Custom Prompt:</div>
-                  <div>initialise variable_name with user input "Your prompt message:"</div>
+                  <div>initialise variable_name with user input {'"Your prompt message:"'}</div>
                   <div className="mt-3 text-primary font-semibold mb-2">With Type Specification:</div>
                   <div>initialise variable_name as type with user input</div>
                   <div className="mt-3 text-primary font-semibold mb-2">Combined:</div>
-                  <div>initialise variable_name as type with user input "Your prompt:"</div>
+                  <div>initialise variable_name as type with user input {'"Your prompt:"'}</div>
                 </div>
                 <div className="text-sm text-muted-foreground space-y-2">
                   <p>
-                    User input allows you to get values from users while your program is running. The browser will show a prompt dialog asking for input.
+                    User input allows you to get values from users while your program is running. The browser will show
+                    a prompt dialog asking for input.
                   </p>
                   <p>
-                    <strong>Supported types:</strong> <code className="bg-muted px-1 rounded">number</code>, <code className="bg-muted px-1 rounded">boolean</code>, <code className="bg-muted px-1 rounded">string</code> (default)
+                    <strong>Supported types:</strong> <code className="bg-muted px-1 rounded">number</code>,{" "}
+                    <code className="bg-muted px-1 rounded">boolean</code>,{" "}
+                    <code className="bg-muted px-1 rounded">string</code> (default)
                   </p>
                   <p>
-                    If no type is specified, the input is treated as a string. For boolean input, enter "true" or "True" (case-insensitive).
+                    If no type is specified, the input is treated as a string. For boolean input, enter {'"true"'} or{" "}
+                    {'"True"'} (case-insensitive).
                   </p>
                 </div>
               </div>
@@ -115,25 +119,25 @@ is_active is equal to true`)
                 <div className="space-y-3">
                   <h4 className="font-semibold">Basic String Input</h4>
                   <div className="bg-muted p-3 rounded-lg font-mono text-sm space-y-1">
-                    <div>initialise name with user input "Enter your name:"</div>
-                    <div>print "Hello, " + name</div>
+                    <div>initialise name with user input {'"Enter your name:"'}</div>
+                    <div>print {'"Hello, "'} + name</div>
                   </div>
                 </div>
                 <div className="space-y-3">
                   <h4 className="font-semibold">Number Input</h4>
                   <div className="bg-muted p-3 rounded-lg font-mono text-sm space-y-1">
-                    <div>initialise age as number with user input "Enter your age:"</div>
+                    <div>initialise age as number with user input {'"Enter your age:"'}</div>
                     <div>initialise nextYear as number</div>
                     <div>nextYear is equal to age plus 1</div>
-                    <div>print "Next year you will be " + nextYear</div>
+                    <div>print {'"Next year you will be "'} + nextYear</div>
                   </div>
                 </div>
                 <div className="space-y-3">
                   <h4 className="font-semibold">Boolean Input</h4>
                   <div className="bg-muted p-3 rounded-lg font-mono text-sm space-y-1">
-                    <div>initialise isStudent as boolean with user input "Are you a student? (true/false):"</div>
+                    <div>initialise isStudent as boolean with user input {'"Are you a student? (true/false):"'}</div>
                     <div>if isStudent then</div>
-                    <div className="ml-4">print "You are a student!"</div>
+                    <div className="ml-4">print {'"You are a student!"'}</div>
                     <div>endif</div>
                   </div>
                 </div>
@@ -143,7 +147,7 @@ is_active is equal to true`)
                     <div>initialise value with user input</div>
                     <div>print value</div>
                   </div>
-                  <p className="text-sm text-muted-foreground">Uses default prompt: "Enter value:"</p>
+                  <p className="text-sm text-muted-foreground">Uses default prompt: {'"Enter value:"'}</p>
                 </div>
                 <Button
                   variant="outline"
@@ -193,9 +197,9 @@ endif`)
             <div className="space-y-3">
               <h4 className="font-semibold">Text (Strings)</h4>
               <div className="bg-muted p-3 rounded-lg font-mono text-sm space-y-1">
-                <div>name is equal to "John"</div>
-                <div>message is equal to "Hello, World!"</div>
-                <div>empty is equal to ""</div>
+                <div>name is equal to {'"John"'}</div>
+                <div>message is equal to {'"Hello, World!"'}</div>
+                <div>empty is equal to {'""'}</div>
               </div>
               <p className="text-sm text-muted-foreground">Text must be enclosed in double quotes.</p>
             </div>
@@ -213,7 +217,7 @@ endif`)
               <h4 className="font-semibold">Expressions</h4>
               <div className="bg-muted p-3 rounded-lg font-mono text-sm space-y-1">
                 <div>sum is equal to x plus y</div>
-                <div>full_name is equal to first_name + " " + last_name</div>
+                <div>full_name is equal to first_name + {'" "'} + last_name</div>
               </div>
               <p className="text-sm text-muted-foreground">Variables can be assigned the result of expressions.</p>
             </div>
@@ -256,7 +260,7 @@ endif`)
             <div className="space-y-2">
               <h4 className="font-semibold">Naming Rules</h4>
               <ul className="space-y-1 text-sm">
-                <li>• Use descriptive names that explain the variable's purpose</li>
+                <li>• Use descriptive names that explain the variable{"'s"} purpose</li>
                 <li>• Use lowercase letters and underscores (snake_case)</li>
                 <li>• Start with a letter, not a number</li>
                 <li>• Avoid spaces and special characters</li>
@@ -325,9 +329,9 @@ endif`)
             <div className="space-y-3">
               <h4 className="font-semibold">Global Variables</h4>
               <div className="bg-muted p-4 rounded-lg font-mono text-sm space-y-1">
-                <div>name is equal to "Alice"</div>
+                <div>name is equal to {'"Alice"'}</div>
                 <div className="mt-2">if age is greater than 18 then</div>
-                <div className="ml-4">print name + " is an adult"</div>
+                <div className="ml-4">print name + {'" is an adult"'}</div>
                 <div>endif</div>
               </div>
               <p className="text-sm text-muted-foreground">
@@ -339,7 +343,7 @@ endif`)
               <h4 className="font-semibold">Block Variables</h4>
               <div className="bg-muted p-4 rounded-lg font-mono text-sm space-y-1">
                 <div>if score is greater than 90 then</div>
-                <div className="ml-4">grade is equal to "A"</div>
+                <div className="ml-4">grade is equal to {'"A"'}</div>
                 <div className="ml-4">print grade</div>
                 <div>endif</div>
                 <div className="mt-2 text-red-600"># grade is not accessible here</div>

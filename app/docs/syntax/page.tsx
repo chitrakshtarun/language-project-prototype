@@ -3,7 +3,7 @@
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Code2, Variable, Calculator, GitBranch, RotateCcw, Function } from "lucide-react";
+import { Code2, Variable, Calculator, GitBranch, RotateCcw } from "lucide-react";
 
 export default function SyntaxPage() {
   return (
@@ -42,7 +42,7 @@ export default function SyntaxPage() {
             </TabsContent>
             <TabsContent value="examples">
               <div className="bg-muted p-4 rounded-lg font-mono text-sm space-y-1">
-                <div>name is equal to "John"</div>
+                <div>name is equal to {'"John"'}</div>
                 <div>age is equal to 25</div>
                 <div>price is equal to 99.99</div>
                 <div>is_student is equal to true</div>
@@ -166,7 +166,7 @@ export default function SyntaxPage() {
                 <div className="bg-muted p-4 rounded-lg font-mono text-sm">
                   <div className="text-green-600 mb-2"># Example</div>
                   <div>if age is greater than 17 then</div>
-                  <div className="ml-4">print "You can vote!"</div>
+                  <div className="ml-4">print {'"You can vote!"'}</div>
                   <div>endif</div>
                 </div>
               </div>
@@ -184,9 +184,9 @@ export default function SyntaxPage() {
                 <div className="bg-muted p-4 rounded-lg font-mono text-sm">
                   <div className="text-green-600 mb-2"># Example</div>
                   <div>if temperature is greater than 30 then</div>
-                  <div className="ml-4">print "It's hot!"</div>
+                  <div className="ml-4">print {'"It\'s hot!"'}</div>
                   <div>else</div>
-                  <div className="ml-4">print "It's not that hot"</div>
+                  <div className="ml-4">print {'"It\'s not that hot"'}</div>
                   <div>endif</div>
                 </div>
               </div>
@@ -252,7 +252,6 @@ export default function SyntaxPage() {
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center space-x-2">
-            <Function className="h-5 w-5" />
             <span>Functions</span>
           </CardTitle>
           <CardDescription>Define and call reusable functions</CardDescription>
@@ -279,7 +278,8 @@ export default function SyntaxPage() {
                   <div>end function</div>
                 </div>
                 <div className="text-sm text-muted-foreground">
-                  Functions can accept multiple parameters separated by "and". Use "return value" to return a value from a function.
+                  Functions can accept multiple parameters separated by {'"and"'}. Use {'"return value"'} to return a
+                  value from a function.
                 </div>
               </div>
             </TabsContent>
@@ -304,7 +304,7 @@ export default function SyntaxPage() {
                 <div className="bg-muted p-4 rounded-lg font-mono text-sm">
                   <div className="text-green-600 mb-2"># Simple Function</div>
                   <div>let greet be a function</div>
-                  <div className="ml-4">print "Hello, World!"</div>
+                  <div className="ml-4">print {'"Hello, World!"'}</div>
                   <div>end function</div>
                   <div className="mt-2">run greet</div>
                 </div>
@@ -344,7 +344,7 @@ export default function SyntaxPage() {
               <h4 className="font-semibold">Print Output</h4>
               <div className="bg-muted p-4 rounded-lg font-mono text-sm space-y-1">
                 <div>print variable_name</div>
-                <div>print "text string"</div>
+                <div>print {'"text string"'}</div>
               </div>
             </div>
           </div>
@@ -366,7 +366,7 @@ export default function SyntaxPage() {
               <div>
                 <p className="font-medium">Use descriptive variable names</p>
                 <p className="text-sm text-muted-foreground">
-                  Instead of "x", use "age", "count", or "temperature" for clarity.
+                  Instead of {'"x"'}, use {'"age"'}, {'"count"'}, or {'"temperature"'} for clarity.
                 </p>
               </div>
             </div>
