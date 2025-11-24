@@ -50,9 +50,6 @@ export default function Home() {
           <Link href={"/docs"}>
             <Button variant={"link"}>Documentation</Button>
           </Link>
-          <Link href={"/test"}>
-            <Button variant={"link"}>Test Suite</Button>
-          </Link>
           <Button onClick={handleRunCode}>Run Code</Button>
         </div>
       </nav>

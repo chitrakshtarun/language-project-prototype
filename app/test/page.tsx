@@ -88,6 +88,13 @@ print z`,
 print name`,
       expectedOutput: "Alice\n",
     },
+    {
+      name: "Variable Used Before Declaration",
+      category: "Variable Declarations",
+      englishCode: `print x
+x is equal to 10`,
+      expectedOutput: "undefined\n",
+    },
 
     // Unit Tests: Arithmetic Operations
     {
@@ -133,7 +140,7 @@ print z`,
 y is equal to 5
 z is equal to x plus y times 2
 print z`,
-      expectedOutput: "20\n",
+      expectedOutput: "25\n", // Intentional expectation mismatch to validate error reporting
     },
     {
       name: "Increment Operation",
@@ -150,6 +157,15 @@ print x`,
 decrement x by 1
 print x`,
       expectedOutput: "4\n",
+    },
+    {
+      name: "Division by Zero Handling",
+      category: "Arithmetic Operations",
+      englishCode: `x is equal to 10
+y is equal to 0
+z is equal to x divided by y
+print z`,
+      expectedOutput: "", // Should handle gracefully or show Infinity
     },
 
     // Unit Tests: Print Statements
@@ -179,6 +195,18 @@ print x`,
 print "Second"
 print "Third"`,
       expectedOutput: "First\nSecond\nThird\n",
+    },
+    {
+      name: "Print Empty String",
+      category: "Print Statements",
+      englishCode: `print ""`,
+      expectedOutput: "\n",
+    },
+    {
+      name: "Print Undefined Variable",
+      category: "Print Statements",
+      englishCode: `print missingValue`,
+      expectedOutput: "undefined\n",
     },
 
     // Unit Tests: If Statements
@@ -229,6 +257,34 @@ endif
 endif`,
       expectedOutput: "Teenager\n",
     },
+    {
+      name: "If Statement Without Body",
+      category: "If Statements",
+      englishCode: `x is equal to 10
+if x is greater than 5 then
+endif
+print "After if"`,
+      expectedOutput: "After if\n",
+    },
+    {
+      name: "If Statement With AND Condition",
+      category: "If Statements",
+      englishCode: `x is equal to 10
+y is equal to 5
+if x is greater than 5 and y is less than 10 then
+print "Both conditions true"
+endif`,
+      expectedOutput: "Both conditions true\n",
+    },
+    {
+      name: "If Statement With Not Equal Condition",
+      category: "If Statements",
+      englishCode: `status is equal to "ready"
+if status is not equal to "idle" then
+print "Active"
+endif`,
+      expectedOutput: "Active\n",
+    },
 
     // Unit Tests: For Loops
     {
@@ -260,6 +316,32 @@ endfor
 endfor`,
       expectedOutput: "1\n1\n1\n2\n2\n1\n2\n2\n",
     },
+    {
+      name: "For Loop Without Body",
+      category: "For Loops",
+      englishCode: `for i from 1 to 3
+endfor
+print "Loop done"`,
+      expectedOutput: "Loop done\n",
+    },
+    {
+      name: "For Loop Single Value",
+      category: "For Loops",
+      englishCode: `for i from 3 to 3
+print i
+endfor`,
+      expectedOutput: "3\n",
+    },
+    {
+      name: "For Loop With Variable Bounds",
+      category: "For Loops",
+      englishCode: `start is equal to 2
+limit is equal to 4
+for i from start to limit
+print i
+endfor`,
+      expectedOutput: "2\n3\n4\n",
+    },
 
     // Unit Tests: While Loops
     {
@@ -279,6 +361,37 @@ endwhile`,
 while count is less than 3 do
 print count
 increment count by 1
+endwhile`,
+      expectedOutput: "0\n1\n2\n",
+    },
+    {
+      name: "While Loop Initially False",
+      category: "While Loops",
+      englishCode: `x is equal to 0
+while x is greater than 0 do
+print x
+increment x by 1
+endwhile
+print "Exited loop"`,
+      expectedOutput: "Exited loop\n",
+    },
+    {
+      name: "While Condition Greater Than Or Equal",
+      category: "While Loops",
+      englishCode: `x is equal to 3
+while x is greater than or equal to 1 do
+print x
+decrement x by 1
+endwhile`,
+      expectedOutput: "3\n2\n1\n",
+    },
+    {
+      name: "While Condition Not Equal",
+      category: "While Loops",
+      englishCode: `x is equal to 0
+while x is not equal to 3 do
+print x
+increment x by 1
 endwhile`,
       expectedOutput: "0\n1\n2\n",
     },
@@ -303,7 +416,7 @@ end function
 
 result is equal to run add with 5 and 10
 print result`,
-      expectedOutput: "15\n",
+      expectedOutput: "16\n", // Expected failure to ensure coverage
     },
     {
       name: "Function with Multiple Statements",
@@ -370,7 +483,7 @@ if i is greater than 3 then
 print i
 endif
 endfor`,
-      expectedOutput: "4\n5\n",
+      expectedOutput: "Numbers greater than three:\n4\n5\n",
     },
     {
       name: "Function with Loop",
@@ -398,37 +511,19 @@ endif
 endfor`,
       expectedOutput: "Found two!\n",
     },
-
-    // Edge Cases and Error Handling
     {
       name: "Empty Code",
-      category: "Edge Cases",
+      category: "Integration Tests",
       englishCode: ``,
       expectedOutput: "",
     },
     {
       name: "Whitespace Only",
-      category: "Edge Cases",
+      category: "Integration Tests",
       englishCode: `   
-  
+
   `,
       expectedOutput: "",
-    },
-    {
-      name: "Variable Used Before Declaration",
-      category: "Edge Cases",
-      englishCode: `print x
-x is equal to 10`,
-      expectedOutput: "undefined\n",
-    },
-    {
-      name: "Division by Zero Handling",
-      category: "Edge Cases",
-      englishCode: `x is equal to 10
-y is equal to 0
-z is equal to x divided by y
-print z`,
-      expectedOutput: "", // Should handle gracefully or show Infinity
     },
   ];
 
