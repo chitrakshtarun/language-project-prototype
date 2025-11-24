@@ -29,9 +29,9 @@ interface TestResult {
 export default function TestPage() {
   const [testResults, setTestResults] = useState<TestResult[]>([]);
   const [isRunning, setIsRunning] = useState(false);
-  const [_, setRunCount] = useState(1);
+  const [_runCount, setRunCount] = useState(1);
   const [iterationsInput, setIterationsInput] = useState("1");
-  const [_, setProgress] = useState({ completed: 0, total: 0 });
+  const [_progress, setProgress] = useState({ completed: 0, total: 0 });
   const [aggregateByTest, setAggregateByTest] = useState<
     Record<
       string,
